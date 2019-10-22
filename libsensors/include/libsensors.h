@@ -38,6 +38,9 @@ class Sensors {
     virtual void on_gravity(double t, double x, double y, double z) {
     }
 
+    virtual void on_attitude(double t, double x, double y, double z, double w) {
+    }
+
     virtual void on_error(const char* msg) {
     }
 };

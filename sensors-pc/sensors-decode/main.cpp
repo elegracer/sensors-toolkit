@@ -20,8 +20,8 @@ class SensorsDecoder : public libsensors::Sensors {
         fwrite(&type, sizeof(type), 1, stdout);
         fwrite(&t, sizeof(t), 1, stdout);
         fwrite(&x, sizeof(x), 1, stdout);
-        fwrite(&y, sizeof(x), 1, stdout);
-        fwrite(&z, sizeof(x), 1, stdout);
+        fwrite(&y, sizeof(y), 1, stdout);
+        fwrite(&z, sizeof(z), 1, stdout);
     }
 
     void on_accelerometer(double t, double x, double y, double z) override {
@@ -29,36 +29,27 @@ class SensorsDecoder : public libsensors::Sensors {
         fwrite(&type, sizeof(type), 1, stdout);
         fwrite(&t, sizeof(t), 1, stdout);
         fwrite(&x, sizeof(x), 1, stdout);
-        fwrite(&y, sizeof(x), 1, stdout);
-        fwrite(&z, sizeof(x), 1, stdout);
+        fwrite(&y, sizeof(y), 1, stdout);
+        fwrite(&z, sizeof(z), 1, stdout);
     }
 
-    void on_magnetometer(double t, double x, double y, double z) override {
-        const std::uint8_t type = 0x03;
+    void on_attitude(double t, double x, double y, double z, double w) override {
+        const std::uint8_t type = 0x11;
         fwrite(&type, sizeof(type), 1, stdout);
         fwrite(&t, sizeof(t), 1, stdout);
         fwrite(&x, sizeof(x), 1, stdout);
-        fwrite(&y, sizeof(x), 1, stdout);
-        fwrite(&z, sizeof(x), 1, stdout);
+        fwrite(&y, sizeof(y), 1, stdout);
+        fwrite(&z, sizeof(z), 1, stdout);
+        fwrite(&w, sizeof(w), 1, stdout);
     }
 
-    void on_altimeter(double t, double pressure, double elevation) override {
-        const std::uint8_t type = 0x04;
+    void on_gravity(double t, double x, double y, double z) override {
+        const std::uint8_t type = 0x12;
         fwrite(&type, sizeof(type), 1, stdout);
         fwrite(&t, sizeof(t), 1, stdout);
-        fwrite(&pressure, sizeof(pressure), 1, stdout);
-        fwrite(&elevation, sizeof(elevation), 1, stdout);
-    }
-
-    void on_gps(double t, double longitude, double latitude, double altitude, double horizontal_accuracy, double vertical_accuracy) override {
-        const std::uint8_t type = 0x05;
-        fwrite(&type, sizeof(type), 1, stdout);
-        fwrite(&t, sizeof(t), 1, stdout);
-        fwrite(&longitude, sizeof(longitude), 1, stdout);
-        fwrite(&latitude, sizeof(latitude), 1, stdout);
-        fwrite(&altitude, sizeof(altitude), 1, stdout);
-        fwrite(&horizontal_accuracy, sizeof(horizontal_accuracy), 1, stdout);
-        fwrite(&vertical_accuracy, sizeof(vertical_accuracy), 1, stdout);
+        fwrite(&x, sizeof(x), 1, stdout);
+        fwrite(&y, sizeof(y), 1, stdout);
+        fwrite(&z, sizeof(z), 1, stdout);
     }
 };
 

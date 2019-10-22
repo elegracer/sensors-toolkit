@@ -32,9 +32,11 @@ class SensorsPreview : public libsensors::Sensors {
         } else {
             cv::cvtColor(image, preview, cv::COLOR_GRAY2BGR);
         }
-
-        std::lock_guard lock(preview_mutex);
-        preview_image = preview;
+        {
+            std::lock_guard lock(preview_mutex);
+            preview_image = preview;
+        }
+        std::this_thread::sleep_for(33ms);
     }
 };
 

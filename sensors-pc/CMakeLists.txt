@@ -14,6 +14,16 @@ target_link_libraries(sensors-decode
   options::modern-cpp
 )
 
+add_executable(sensors-from-dior
+  ${CMAKE_CURRENT_SOURCE_DIR}/sensors-from-dior/main.cpp
+)
+
+target_link_libraries(sensors-from-dior
+  sensors
+  options::modern-cpp
+  depends::opencv
+)
+
 add_executable(sensors-preview
   ${CMAKE_CURRENT_SOURCE_DIR}/sensors-preview/main.cpp
 )
