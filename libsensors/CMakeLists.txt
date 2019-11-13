@@ -3,9 +3,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules")
 project(libsensors LANGUAGES CXX)
 
 include(SuperBuildDepends)
-if(NOT IOS AND NOT ANDROID)
-  superbuild_extern(ffmpeg)
-endif()
 
 add_library(sensors
   ${CMAKE_CURRENT_SOURCE_DIR}/include/libsensors.h
@@ -24,10 +21,3 @@ target_link_libraries(sensors
   PRIVATE
     options::modern-cpp
 )
-
-if(TARGET depends::ffmpeg)
-  target_link_libraries(sensors
-    PUBLIC
-      depends::ffmpeg
-  )
-endif()
