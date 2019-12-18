@@ -25,8 +25,8 @@ include(FetchContent)
 
 FetchContent_Declare(
   super-build-depends
-  GIT_REPOSITORY https://github.com/itsuhane/cmake-superbuild-depends.git
-  GIT_TAG        master
+  GIT_REPOSITORY https://github.com/elegracer/cmake-superbuild-depends.git
+  GIT_TAG        lvo
 )
 FetchContent_GetProperties(super-build-depends)
 if(NOT super-build-depends_POPULATED)
