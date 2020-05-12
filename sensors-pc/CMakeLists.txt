@@ -33,3 +33,13 @@ target_link_libraries(sensors-preview
   options::modern-cpp
   depends::opencv
 )
+
+add_executable(sensors-sort
+  ${CMAKE_CURRENT_SOURCE_DIR}/sensors-sort/main.cpp
+)
+
+target_link_libraries(sensors-sort
+  sensors
+  options::modern-cpp
+  depends::opencv
+)
